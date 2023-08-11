@@ -3,7 +3,7 @@ package com.example.employeemanagementsystem.exceptionhandlers;
 import com.example.employeemanagementsystem.exceptionhandlers.exceptions.EmployeeAlreadyExistException;
 import com.example.employeemanagementsystem.exceptionhandlers.exceptions.EmployeeIdNotFoundException;
 import com.example.employeemanagementsystem.exceptionhandlers.exceptions.EmployeeNotFoundException;
-import com.example.employeemanagementsystem.exceptionhandlers.exceptions.EmployeeTypeExceptionException;
+import com.example.employeemanagementsystem.exceptionhandlers.exceptions.EmployeeTypeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -37,7 +37,7 @@ public class EmployeeExceptionHandler {
     }
 
     @ExceptionHandler
-    public ResponseEntity<EmployeeErrorResponse> handleException(EmployeeTypeExceptionException employeeTypeException){
+    public ResponseEntity<EmployeeErrorResponse> handleException(EmployeeTypeException employeeTypeException){
         EmployeeErrorResponse employeeErrorResponse = new EmployeeErrorResponse();
         employeeErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
         employeeErrorResponse.setMessage(employeeTypeException.getMessage());
